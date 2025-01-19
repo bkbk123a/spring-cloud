@@ -1,13 +1,15 @@
-package com.example.catalogservice.jpa;
+package com.example.catalogservice.jpa.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "catalog")
 public class CatalogEntity implements Serializable {

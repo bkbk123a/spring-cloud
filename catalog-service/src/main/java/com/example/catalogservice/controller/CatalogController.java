@@ -1,11 +1,10 @@
 package com.example.catalogservice.controller;
 
-import com.example.catalogservice.jpa.CatalogEntity;
+import com.example.catalogservice.jpa.entity.CatalogEntity;
 import com.example.catalogservice.service.CatalogService;
-import com.example.catalogservice.vo.ResponseCatalog;
+import com.example.catalogservice.vo.response.ResponseCatalog;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
