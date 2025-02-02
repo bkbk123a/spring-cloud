@@ -31,8 +31,8 @@ import java.util.Date;
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private UserServiceImpl userService;
-    private Environment environment;
+    private final UserServiceImpl userService;
+    private final Environment environment;
 
     public AuthenticationFilter(AuthenticationManager authenticationManager,
                                 UserServiceImpl userService, Environment environment) {
