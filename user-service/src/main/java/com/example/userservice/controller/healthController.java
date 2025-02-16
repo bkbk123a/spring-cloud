@@ -1,15 +1,20 @@
 package com.example.userservice.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor
 @RestController
 public class healthController {
 
-    private final Environment env;
+    private Environment env;
+
+    @Autowired
+    public healthController(Environment env) {
+        this.env = env;
+    }
 
     @GetMapping("/health-check")
     public String status() {
@@ -17,7 +22,7 @@ public class healthController {
                 + ", port(local.server.port)=" + env.getProperty("local.server.port")
                 + ", port(server.port)=" + env.getProperty("server.port")
                 + ", gateway ip(env)=" + env.getProperty("gateway.ip")
-                + ", message=" + env.getProperty("greeting.message")
+                + ", token secret=" + env.getProperty("token.secret")
                 + ", token expiration time=" + env.getProperty("token.expiration_time"));
     }
 
