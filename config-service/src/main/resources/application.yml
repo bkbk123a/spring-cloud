@@ -1,0 +1,29 @@
+server:
+  port: 8888
+
+spring:
+  #  profiles:
+  #    active: native
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///C:\code\cloud\bk\spring-cloud
+        git: #default
+          uri: file:///C:\code\cloud\bk\spring-cloud
+        #          username: <github-id>
+        #          password: <gihub-accessToken>
+        # bootstrap: true
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh, refresh, metrics
