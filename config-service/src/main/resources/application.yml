@@ -2,8 +2,8 @@ server:
   port: 8888
 
 spring:
-  #  profiles:
-  #    active: native
+  profiles:
+    active: native # 해당 옵션 없으면 기본적으로 git 에서 config 정보 로드
   application:
     name: config-service
   cloud:
@@ -11,16 +11,16 @@ spring:
       server:
         native:
           search-locations: file:///C:\code\cloud\bk\spring-cloud
-        git: #default
-          uri: file:///C:\code\cloud\bk\spring-cloud
+        # git: #default
+        # uri: file:///C:\code\cloud\bk\spring-cloud
         #          username: <github-id>
         #          password: <gihub-accessToken>
         # bootstrap: true
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 management:
   endpoints:
