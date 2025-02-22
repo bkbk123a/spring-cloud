@@ -2,4 +2,5 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
-      name: config-service # config-service 의 기본(application.yml 참조)
+      name: user-service # config-service 의 application.uml 내의 search-locations 경로로부터 user-service.yml 읽는다.
+      # name: config-service # config-service 의 기본(application.yml 참조)
