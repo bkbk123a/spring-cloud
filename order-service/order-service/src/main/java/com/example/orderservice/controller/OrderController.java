@@ -1,10 +1,10 @@
-package com.example.catalogservice.controller;
+package com.example.orderservice.controller;
 
-import com.example.catalogservice.dto.OrderDto;
-import com.example.catalogservice.jpa.entity.OrderEntity;
-import com.example.catalogservice.service.OrderService;
-import com.example.catalogservice.vo.request.RequestOrder;
-import com.example.catalogservice.vo.response.ResponseOrder;
+import com.example.orderservice.dto.OrderDto;
+import com.example.orderservice.jpa.entity.OrderEntity;
+import com.example.orderservice.service.OrderService;
+import com.example.orderservice.vo.request.RequestOrder;
+import com.example.orderservice.vo.response.ResponseOrder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

@@ -1,4 +1,4 @@
-package com.example.catalogservice.jpa.entity;
+package com.example.orderservice.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

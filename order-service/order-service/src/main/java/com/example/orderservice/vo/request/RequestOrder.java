@@ -1,4 +1,4 @@
-package com.example.catalogservice.vo.request;
+package com.example.orderservice.vo.request;
 
 import lombok.Getter;
 

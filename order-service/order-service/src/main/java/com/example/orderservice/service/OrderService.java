@@ -1,8 +1,8 @@
-package com.example.catalogservice.service;
+package com.example.orderservice.service;
 
-import com.example.catalogservice.dto.OrderDto;
-import com.example.catalogservice.jpa.entity.OrderEntity;
-import com.example.catalogservice.jpa.repository.OrderRepository;
+import com.example.orderservice.dto.OrderDto;
+import com.example.orderservice.jpa.entity.OrderEntity;
+import com.example.orderservice.jpa.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -25,7 +25,7 @@ public class OrderService {
         OrderEntity orderEntity = mapper.map(orderDto, OrderEntity.class);
 
         orderRepository.save(orderEntity);
-
+        // 생성한 주문 반환
         return mapper.map(orderEntity, OrderDto.class);
     }
 
