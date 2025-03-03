@@ -29,20 +29,15 @@ public class WebSecurity {
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+
         authenticationManagerBuilder
                 .userDetailsService(userService)
-                .passwordEncoder(bCryptPasswordEncoder);
+                .passwordEncoder(bCryptPasswordEncoder);    // 패스워드 암호화 처리
 
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
         http.csrf(AbstractHttpConfigurer::disable);
-
+        // JWT 인증은 gateway-service에서 함 
         http.authorizeHttpRequests((authz) -> authz
-                                .requestMatchers(new AntPathRequestMatcher("/actuator/**")).permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/users/create", "POST")).permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/health-check")).permitAll()
-                                .requestMatchers("/**").access(
-                                        new WebExpressionAuthorizationManager( "hasIpAddress('127.0.0.1')")) // host pc ip address
                                 .anyRequest().authenticated()
                 )
                 .authenticationManager(authenticationManager)
@@ -54,7 +49,7 @@ public class WebSecurity {
 
         return http.build();
     }
-
+    // 스프링 시큐리티에서 지원하는 로그인 기능
     private AuthenticationFilter getAuthenticationFilter(AuthenticationManager authenticationManager) throws Exception {
         return new AuthenticationFilter(authenticationManager, userService, env);
     }

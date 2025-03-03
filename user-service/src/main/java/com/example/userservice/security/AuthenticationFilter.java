@@ -3,7 +3,7 @@ package com.example.userservice.security;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.service.UserServiceImpl;
-import com.example.userservice.vo.LoginReq;
+import com.example.userservice.vo.request.LoginReq;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -41,7 +41,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         this.environment = environment;
     }
 
-    // 인증 시도
+    // 1. 로그인 인증 시도 => loadUserByUsername 호출됨 (스프링 시큐리티에서 지원함)
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
@@ -49,14 +49,15 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
             LoginReq loginReq = new ObjectMapper().readValue(req.getInputStream(), LoginReq.class);
 
             return getAuthenticationManager().authenticate(
-                    new UsernamePasswordAuthenticationToken(loginReq.getEmail(), loginReq.getPassword(), new ArrayList<>()));
+                    new UsernamePasswordAuthenticationToken(loginReq.getEmail(), loginReq.getPwd(), new ArrayList<>()));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    // 인증 성공 후 처리
+    // 2. 인증 성공 후 처리
+    // 헤더에 userId, token 값 설정 => gateway 에서 토큰값 검증
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {

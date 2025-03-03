@@ -1,4 +1,4 @@
-package com.example.userservice.vo;
+package com.example.userservice.vo.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -14,5 +14,5 @@ public class LoginReq {
 
     @NotNull(message = "Password cannot be null")
     @Size(min = 8, message = "Password must be equals or grater than 8 characters")
-    private String password;
+    private String pwd;
 }
